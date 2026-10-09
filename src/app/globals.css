@@ -1,26 +1,201 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #080909;
+  color: #f4f3ef;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.scroll-section {
+  height: 220vh;
+  position: relative;
+  background: radial-gradient(
+    ellipse at 50% 65%,
+    #252a25,
+    #111412 45%,
+    #080909 80%
+  );
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-header {
+  position: absolute;
+  z-index: 3;
+  top: 28px;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: #f4f3ef;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-decoration: none;
+}
+
+.brand span {
+  color: #d7ff64;
+}
+
+.menu-label, .eyebrow, .hero-footer, .stat-card p {
+  font-size: .65rem;
+  letter-spacing: .18em;
+}
+
+.menu-label, .hero-footer {
+  color: #92938f;
+}
+
+.hero-content {
+  position: absolute;
+  z-index: 2;
+  top: 16%;
+  left: 8%;
+  width: 84%;
+}
+
+.eyebrow {
+  color: #d7ff64;
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(3rem, 8.7vw, 8.5rem);
+  font-weight: 900;
+  line-height: .88;
+  letter-spacing: .12em;
+}
+
+.hero-title span {
+  color: transparent;
+  -webkit-text-stroke: 1px #f4f3ef;
+}
+
+.stats-grid {
+  display: flex;
+  gap: clamp(22px, 5vw, 75px);
+  margin-top: 30px;
+}
+
+.stat-card h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.stat-card p {
+  margin: 0;
+  color: #92938f;
+  font-size: .55rem;
+}
+
+.car-image {
+  position: absolute;
+  z-index: 1;
+  width: min(76vw, 1000px);
+  right: 8%;
+  bottom: 9%;
+  will-change: transform;
+}
+
+.car-image img {
+  display: block;
+  width: 100%;
+  height: clamp(200px, 34vw, 410px);
+  object-fit: cover;
+  object-position: center 55%;
+  border-radius: 5px;
+  filter: contrast(1.06) saturate(.82);
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+}
+
+.hero-footer {
+  position: absolute;
+  z-index: 3;
+  bottom: 24px;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: .58rem;
+}
+
+.hero-footer span:last-child {
+  color: #d7ff64;
+}
+
+.next-section {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px;
+  text-align: center;
+  background: #e9e9e2;
+  color: #111310;
+}
+
+.next-section > p:first-child {
+  font-size: .7rem;
+  letter-spacing: .22em;
+}
+
+.next-section h2 {
+  margin: 18px 0;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  letter-spacing: -.05em;
+}
+
+.next-description {
+  max-width: 430px;
+  color: #5f6259;
+  line-height: 1.8;
+}
+
+@media (max-width: 650px) {
+  .hero-header { top: 22px; }
+  .menu-label { font-size: .48rem; }
+  .hero-content { top: 19%; left: 6%; width: 90%; }
+  .hero-title {
+    font-size: clamp(2.6rem, 11vw, 4.8rem);
+    letter-spacing: .07em;
+  }
+  .stats-grid { gap: 16px; margin-top: 25px; }
+  .stat-card h2 { font-size: 1.4rem; }
+  .stat-card p { font-size: .43rem; line-height: 1.6; }
+  .car-image { width: 110%; right: -15%; bottom: 14%; }
+  .car-image img { height: 230px; }
+  .hero-footer {
+    bottom: 18px;
+    font-size: .43rem;
+    letter-spacing: .08em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
 }
